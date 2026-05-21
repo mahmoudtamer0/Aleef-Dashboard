@@ -1,0 +1,50 @@
+.om-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.om-badge--active {
+    background: #d1e7dd;
+    color: #0a3622;
+}
+
+.om-badge--banned {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.om-btn-danger {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    background: #ef4444;
+    color: white;
+}
+
+.om-btn-danger:hover {
+    opacity: 0.9;
+}
+
+.om-btn-success {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    background: #10b981;
+    color: white;
+}
+
+.om-btn-success:hover {
+    opacity: 0.9;
+}
