@@ -15,6 +15,7 @@ import AppointmentsManagement from './components/appoinments/Appointments'
 import Orders from './components/orders/Orders'
 import OrderDetails from './components/orders/OrderDetails'
 import ChatMonitoring from './components/chats/Chats'
+import AppointmentDetails from './components/appoinments/AppoinmentDetails'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/products" element={<ProductsManagement />} />
           <Route path="/products/:prodId" element={<ProductDetails />} />
           <Route path="/appointments" element={<AppointmentsManagement />} />
+          <Route path="/appointments/:appointmentId" element={<AppointmentDetails />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/orders/:orderId" element={<OrderDetails />} />
           <Route path="/chats/" element={<ChatMonitoring />} />
