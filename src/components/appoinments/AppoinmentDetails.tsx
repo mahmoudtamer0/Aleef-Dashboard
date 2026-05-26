@@ -12,17 +12,17 @@ interface Appointment {
     reason?: string;
     notes?: string;
     price?: number;
-    status: "pending" | "confirmed" | "rejected" | "completed" | "cancelled";
+    status: "pending" | "accepted" | "rejected" | "completed" | "cancelled";
     rejectionReason?: string | null;
     expiresAt?: string | null;
     createdAt: string;
 }
 
-const STATUS_OPTIONS = ["pending", "confirmed", "rejected", "completed", "cancelled"];
+const STATUS_OPTIONS = ["pending", "accepted", "rejected", "completed", "cancelled"];
 
 const STATUS_COLORS: Record<string, string> = {
     pending: "ad-badge--pending",
-    confirmed: "ad-badge--confirmed",
+    accepted: "ad-badge--accepted",
     rejected: "ad-badge--rejected",
     completed: "ad-badge--completed",
     cancelled: "ad-badge--cancelled",
