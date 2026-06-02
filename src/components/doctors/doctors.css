@@ -1,9 +1,7 @@
 .container {
     margin: auto;
     width: 84%;
-    position: absolute;
-    right: 0;
-    top: 11%;
+    padding: 28px;
 }
 
 h2 {
@@ -16,7 +14,6 @@ h2 {
 }
 
 .card {
-    background: #fff;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -269,4 +266,49 @@ td {
 
 .doctors-btn-clear:hover {
     opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+
+    .om-table-card,
+    .appointments-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .om-table,
+    .appointments-table {
+        min-width: 650px;
+    }
+
+    .om-table th:nth-child(3),
+    .om-table td:nth-child(3),
+    .om-table th:nth-child(4),
+    .om-table td:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .om-page {
+        padding: 0 !important;
+        margin: 0;
+    }
+
+    .container {
+        width: 100% !important;
+        padding: 16px !important;
+        margin: 0 !important;
+        position: static;
+    }
+
+    .om-table-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+    }
+
+    .om-table {
+        min-width: 600px;
+    }
 }

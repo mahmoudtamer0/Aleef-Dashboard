@@ -474,3 +474,85 @@
     background: #e0e5ec;
     border-radius: 4px;
 }
+
+.cm-back-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #3d4a5c;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .cm-back-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .om-page {
+        padding: 0 !important;
+        margin: 0;
+    }
+
+    .container {
+        width: 100% !important;
+        padding: 16px !important;
+        margin: 0 !important;
+        position: static;
+    }
+
+    .om-table-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+    }
+
+    .om-table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .cm-page {
+        padding: 16px;
+    }
+
+    /* الـ layout يبقى column بدل grid */
+    .cm-layout {
+        grid-template-columns: 1fr;
+        min-height: unset;
+    }
+
+    /* الـ sidebar يبقى فوق بارتفاع محدود */
+    .cm-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #f0f2f5;
+        max-height: 320px;
+    }
+
+    /* لما يختار chat يتخفى الـ sidebar */
+    .cm-layout.chat-selected .cm-sidebar {
+        display: none;
+    }
+
+    .cm-layout.chat-selected .cm-main {
+        min-height: 500px;
+    }
+
+    .cm-main {
+        min-height: 400px;
+    }
+
+    .cm-bubble {
+        max-width: 85%;
+    }
+
+    .cm-messages {
+        padding: 12px 16px;
+    }
+}

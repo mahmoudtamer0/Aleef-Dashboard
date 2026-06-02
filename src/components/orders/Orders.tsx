@@ -215,12 +215,12 @@ export default function Orders() {
                         </tbody>
                     </table>
                 )}
-                <Pagination
-                    page={page}
-                    totalPages={totalPages}
-                    onChange={(p) => setPage(p)}
-                />
             </div>
+            <Pagination
+                page={page}
+                totalPages={totalPages}
+                onChange={(p) => setPage(p)}
+            />
         </div>
     );
 }

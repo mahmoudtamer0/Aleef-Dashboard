@@ -33,14 +33,13 @@ body {
     --transition: 0.24s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ══════════════════════════════════════
-       OVERLAY  (mobile only)
-    ══════════════════════════════════════ */
+
 .overlay {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 199;
+    background: rgba(0, 0, 0, 0.4);
     opacity: 0;
     transition: opacity var(--transition);
     pointer-events: none;
@@ -52,14 +51,12 @@ body {
     opacity: 1;
 }
 
-/* ══════════════════════════════════════
-       MOBILE HAMBURGER
-    ══════════════════════════════════════ */
+
 .hamburger {
     display: none;
     position: fixed;
-    top: 14px;
-    left: 14px;
+    top: 12px;
+    left: 12px;
     z-index: 210;
     background: var(--bg-item-active);
     border: none;
@@ -324,15 +321,20 @@ body {
 .content {
     margin-left: var(--sidebar-w);
     min-height: 100vh;
-    padding: 32px;
     transition: margin-left var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-top: 60px;
 }
 
 .sidebar.collapsed~.content {
     margin-left: var(--sidebar-collapsed-w);
+}
+
+/* ← ده المهم */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0 !important;
+        padding-top: 64px;
+    }
 }
 
 .demo-card {

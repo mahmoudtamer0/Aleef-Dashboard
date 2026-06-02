@@ -251,7 +251,7 @@ export default function ProductsManagement() {
     }, [searchInput]);
 
     return (
-        <div className="container">
+        <div className="pm-page">
             <div className="pm-page-header">
                 <div>
                     <h1 className="pm-page-title">Products Management</h1>
@@ -408,42 +408,13 @@ export default function ProductsManagement() {
                     </table>
                 )}
 
-                {/* Pagination */}
-                {/* {!loading && totalPages > 1 && (
-                    <div className="pm-pagination">
-                        <span className="pm-pagination-info">
-                            Page {page} of {totalPages} · {totalProducts} products
-                        </span>
-                        <div className="pm-pagination-btns">
-                            <button className="pm-page-btn" disabled={page === 1} onClick={() => setPage(1)}>«</button>
-                            <button className="pm-page-btn" disabled={page === 1} onClick={() => setPage((p) => p - 1)}>‹</button>
 
-                            {pageNumbers.map((item, idx) =>
-                                item === "..." ? (
-                                    <span key={`dots-${idx}`} className="pm-page-dots">…</span>
-                                ) : (
-                                    <button
-                                        key={item}
-                                        className={`pm-page-btn ${page === item ? "pm-page-btn--active" : ""}`}
-                                        onClick={() => setPage(item as number)}
-                                    >
-                                        {item}
-                                    </button>
-                                )
-                            )}
-
-                            <button className="pm-page-btn" disabled={page === totalPages} onClick={() => setPage((p) => p + 1)}>›</button>
-                            <button className="pm-page-btn" disabled={page === totalPages} onClick={() => setPage(totalPages)}>»</button>
-                        </div>
-                    </div>
-                )} */}
-
-                <Pagination
-                    page={page}
-                    totalPages={totalPages}
-                    onChange={(p) => setPage(p)}
-                />
             </div>
+            <Pagination
+                page={page}
+                totalPages={totalPages}
+                onChange={(p) => setPage(p)}
+            />
 
             {showAddModal && (
                 <AddProductModal onClose={() => setShowAddModal(false)} onSave={fetchProducts} />

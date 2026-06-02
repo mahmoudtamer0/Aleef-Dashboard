@@ -1,7 +1,6 @@
 .pm-page {
     padding: 32px 40px;
     min-height: 100vh;
-    background: #f8fafb;
 }
 
 /* ── Header ── */
@@ -699,4 +698,86 @@
 
 .pm-btn-ghost:hover {
     background: #f4f6f9;
+}
+
+@media (max-width: 768px) {
+
+    .om-table-card,
+    .appointments-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .om-table,
+    .appointments-table {
+        min-width: 650px;
+    }
+
+    .om-table th:nth-child(3),
+    .om-table td:nth-child(3),
+    .om-table th:nth-child(4),
+    .om-table td:nth-child(4) {
+        display: none;
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+
+    .pm-page-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .pm-btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pm-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pm-search-form {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .pm-toolbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .pm-sort-select {
+        flex: 1;
+    }
+
+    .pm-filters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pm-table-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pm-table {
+        min-width: 600px;
+    }
+
+    .pm-modal {
+        padding: 20px 16px;
+        margin: 16px;
+        max-width: calc(100vw - 32px);
+    }
+
+    .pm-modal-row {
+        grid-template-columns: 1fr;
+    }
+
+    .pm-page {
+        padding: 32px 0;
+    }
 }

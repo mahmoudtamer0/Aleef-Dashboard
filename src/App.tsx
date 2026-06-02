@@ -18,30 +18,29 @@ import ChatMonitoring from './components/chats/Chats'
 import AppointmentDetails from './components/appoinments/AppoinmentDetails'
 
 function App() {
-
   return (
     <>
       <Router>
         <NavBar />
         <SidBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/users/:userId" element={<UserDetails />} />
-          <Route path="/doctors" element={<Doctors />} />
-          <Route path="/doctors-requests" element={<DoctorsRequests />} />
-          <Route path="/doctors-requests/:doctorId" element={<DoctorReqDetails />} />
-          <Route path="/products" element={<ProductsManagement />} />
-          <Route path="/products/:prodId" element={<ProductDetails />} />
-          <Route path="/appointments" element={<AppointmentsManagement />} />
-          <Route path="/appointments/:appointmentId" element={<AppointmentDetails />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/orders/:orderId" element={<OrderDetails />} />
-          <Route path="/chats/" element={<ChatMonitoring />} />
-
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/users/:userId" element={<UserDetails />} />
+            <Route path="/doctors" element={<Doctors />} />
+            <Route path="/doctors-requests" element={<DoctorsRequests />} />
+            <Route path="/doctors-requests/:doctorId" element={<DoctorReqDetails />} />
+            <Route path="/products" element={<ProductsManagement />} />
+            <Route path="/products/:prodId" element={<ProductDetails />} />
+            <Route path="/appointments" element={<AppointmentsManagement />} />
+            <Route path="/appointments/:appointmentId" element={<AppointmentDetails />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/orders/:orderId" element={<OrderDetails />} />
+            <Route path="/chats/" element={<ChatMonitoring />} />
+          </Routes>
+        </div>
       </Router>
-
     </>
   )
 }

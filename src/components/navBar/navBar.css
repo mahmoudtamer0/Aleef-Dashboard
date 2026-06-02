@@ -515,3 +515,10 @@
         padding-top: 80px;
     }
 }
+
+/* في navbar.css أو اللي بيتحكم في الـ NavBar */
+@media (max-width: 768px) {
+    .navbar {
+        padding-left: 60px;
+    }
+}

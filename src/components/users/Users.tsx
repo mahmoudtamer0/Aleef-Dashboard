@@ -384,17 +384,19 @@ const Users = () => {
 
                     )}
 
-                    {totalPages > 1 && (
 
-                        <Pagination
-                            page={page}
-                            totalPages={totalPages}
-                            onChange={setPage}
-                        />
-
-                    )}
 
                 </div>
+
+                {totalPages > 1 && (
+
+                    <Pagination
+                        page={page}
+                        totalPages={totalPages}
+                        onChange={setPage}
+                    />
+
+                )}
 
             </div>
 
