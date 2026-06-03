@@ -26,7 +26,7 @@ const DoctorReqDetails = () => {
             })
             .finally(() => setIsLoading(false))
 
-
+        console.log(doctorId)
     }, [])
 
 
@@ -51,7 +51,6 @@ const DoctorReqDetails = () => {
 
             if (!res.ok) throw new Error(data.message || "Failed request");
 
-            // ✅ update UI
             setDoctor(prev => {
                 if (!prev) return prev;
                 return { ...prev, status: "active" };
@@ -70,7 +69,6 @@ const DoctorReqDetails = () => {
                 !isLoading ?
                     <div className="container">
 
-                        {/* ── Breadcrumb ── */}
                         <nav className="dr-breadcrumb">
                             <a href="/dashboard"> Dashboard</a>
                             <span className="dr-breadcrumb__sep">›</span>
@@ -79,7 +77,6 @@ const DoctorReqDetails = () => {
                             <span className="dr-breadcrumb__current">{doctor?.name}</span>
                         </nav>
 
-                        {/* ── Page Header ── */}
                         <div className="dr-header">
                             <div className="dr-header__left">
                                 <button className="btn-back" onClick={() => history.back()} title="Go back">
@@ -96,11 +93,9 @@ const DoctorReqDetails = () => {
                             </span>
                         </div>
 
-                        {/* ── Personal Information ── */}
                         <div className="dr-card">
                             <h2 className="dr-card__title">Personal Information</h2>
 
-                            {/* Avatar + Name */}
                             <div className="dr-profile-top">
                                 {doctor?.profilePic ? (
                                     <img src={doctor?.profilePic} alt={doctor?.name} className="dr-avatar" />
@@ -112,7 +107,6 @@ const DoctorReqDetails = () => {
                                 <p className="dr-name">{doctor?.name}</p>
                             </div>
 
-                            {/* Fields */}
                             <div className="dr-info-grid">
                                 <div>
                                     <p className="dr-field__label">Email Address</p>
@@ -133,7 +127,6 @@ const DoctorReqDetails = () => {
                             </div>
                         </div>
 
-                        {/* ── Professional Information ── */}
                         <div className="dr-card">
                             <h2 className="dr-card__title">Professional Information</h2>
                             <div className="dr-info-col">
@@ -147,7 +140,6 @@ const DoctorReqDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* ── Identity Verification ── */}
                         <div className="dr-card">
                             <h2 className="dr-card__title">Identity Verification</h2>
                             <p className="dr-card__subtitle">Selfie photo submitted by the doctor for identity verification</p>
@@ -183,13 +175,11 @@ const DoctorReqDetails = () => {
                             </div>
                         </div>
 
-                        {/* ── National ID ── */}
                         <div className="dr-card">
                             <h2 className="dr-card__title">National ID</h2>
                             <p className="dr-card__subtitle">Front and back photos of the doctor's national ID card</p>
 
                             <div className="dr-nationalid-grid">
-                                {/* Front */}
                                 <div className="dr-nationalid-item">
                                     <div className="dr-nationalid-item__label">
                                         <span className="dr-nationalid-item__label-dot dr-nationalid-item__label-dot--front"></span>
@@ -220,7 +210,6 @@ const DoctorReqDetails = () => {
                                     )}
                                 </div>
 
-                                {/* Back */}
                                 <div className="dr-nationalid-item">
                                     <div className="dr-nationalid-item__label">
                                         <span className="dr-nationalid-item__label-dot dr-nationalid-item__label-dot--back"></span>
@@ -253,7 +242,6 @@ const DoctorReqDetails = () => {
                             </div>
                         </div>
 
-                        {/* ── Review Actions ── */}
                         <div className="dr-card">
                             <h2 className="dr-card__title">Review Actions</h2>
                             <div className="dr-actions-row">
@@ -290,7 +278,6 @@ const DoctorReqDetails = () => {
                     :
                     <div className="container">
 
-                        {/* ── Breadcrumb ── */}
                         <div className="sk-breadcrumb">
                             <div className="sk" style={{ width: 90, height: 14 }} />
                             <div className="sk" style={{ width: 8, height: 14, borderRadius: 2 }} />
@@ -299,28 +286,22 @@ const DoctorReqDetails = () => {
                             <div className="sk" style={{ width: 110, height: 14 }} />
                         </div>
 
-                        {/* ── Page Header ── */}
                         <div className="sk-header">
                             <div className="sk-header__left">
-                                {/* back button */}
                                 <div className="sk sk--btn" style={{ width: 36, height: 36 }} />
                                 <div className="sk-header__titles">
                                     <div className="sk" style={{ width: 160, height: 22 }} />
                                     <div className="sk" style={{ width: 210, height: 14 }} />
                                 </div>
                             </div>
-                            {/* edit button */}
                             <div className="sk sk--btn" style={{ width: 110, height: 38 }} />
                         </div>
 
-                        {/* ── Profile Card ── */}
                         <div className="sk-card">
-                            {/* section title */}
                             <div className="sk-section-title">
                                 <div className="sk" style={{ width: 140, height: 14 }} />
                             </div>
 
-                            {/* avatar + name */}
                             <div className="sk-profile-top">
                                 <div className="sk sk--circle" style={{ width: 80, height: 80 }} />
                                 <div className="sk-profile-meta">
@@ -331,7 +312,6 @@ const DoctorReqDetails = () => {
                                 </div>
                             </div>
 
-                            {/* info fields */}
                             <div className="sk-info-grid">
                                 <div className="sk-field">
                                     <div className="sk" style={{ width: 90, height: 12 }} />
@@ -352,9 +332,7 @@ const DoctorReqDetails = () => {
                             </div>
                         </div>
 
-                        {/* ── Actions Card ── */}
                         <div className="sk-card">
-                            {/* section title */}
                             <div className="sk-section-title">
                                 <div className="sk" style={{ width: 70, height: 14 }} />
                             </div>

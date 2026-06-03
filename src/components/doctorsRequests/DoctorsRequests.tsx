@@ -208,7 +208,6 @@ const DoctorsRequests = () => {
                                     <th>City</th>
                                     <th>Specialization</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
                                 </tr>
 
                             </thead>
@@ -288,24 +287,6 @@ const DoctorsRequests = () => {
                                                 <span className="om-badge om-badge--pending">
                                                     {doctor.status}
                                                 </span>
-
-                                            </td>
-
-                                            <td
-                                                onClick={(e) => e.stopPropagation()}
-                                            >
-
-                                                <div className="om-actions">
-
-                                                    <button className="om-btn-success">
-                                                        Approve
-                                                    </button>
-
-                                                    <button className="om-btn-danger">
-                                                        Reject
-                                                    </button>
-
-                                                </div>
 
                                             </td>
 
