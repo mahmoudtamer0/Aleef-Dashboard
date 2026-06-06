@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ProductDetails.css";
 import type { Product } from "../../types/product";
+import EditModal from "./EditModal";
 
 const CATEGORY_OPTIONS = ["Food", "Accessories", "Grooming", "Toys", "Medicine", "Other"];
 
@@ -11,159 +12,159 @@ interface EditModalProps {
     onSave: (updated: Product) => void;
 }
 
-function EditModal({ product, onClose, onSave }: EditModalProps) {
-    const categoryName =
-        Array.isArray(product.category)
-            ? product.category?.[0]?.name || ""
-            : product.category;
-    const [form, setForm] = useState({
-        title: product.title,
-        originalPrice: String(product.originalPrice),
-        discount: String(product.discount ?? 0),
-        stock: String(product.stock),
-        category: categoryName,
-        description: product.description ?? "",
-    });
-    const [imageFiles, setImageFiles] = useState<File[]>([]);
-    const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
-    const [imageUrls, setImageUrls] = useState<string[]>(
-        product.productImages?.map((i) => i.url) ?? []
-    );
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+// function EditModal({ product, onClose, onSave }: EditModalProps) {
+//     const categoryName =
+//         Array.isArray(product.category)
+//             ? product.category?.[0]?.name || ""
+//             : product.category;
+//     const [form, setForm] = useState({
+//         title: product.title,
+//         originalPrice: String(product.originalPrice),
+//         discount: String(product.discount ?? 0),
+//         stock: String(product.stock),
+//         category: categoryName,
+//         description: product.description ?? "",
+//     });
+//     const [imageFiles, setImageFiles] = useState<File[]>([]);
+//     const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
+//     const [imageUrls, setImageUrls] = useState<string[]>(
+//         product.productImages?.map((i) => i.url) ?? []
+//     );
+//     const [loading, setLoading] = useState(false);
+//     const [error, setError] = useState("");
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-    ) => {
-        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    };
+//     const handleChange = (
+//         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+//     ) => {
+//         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+//     };
 
-    const removeImageUrl = (idx: number) => {
-        setImageUrls((prev) => prev.filter((_, i) => i !== idx));
-    };
+//     const removeImageUrl = (idx: number) => {
+//         setImageUrls((prev) => prev.filter((_, i) => i !== idx));
+//     };
 
-    const handleSave = async () => {
-        setError("");
-        setLoading(true);
-        try {
-            const token = import.meta.env.VITE_TOKEN;
-            const formData = new FormData();
-            if (form.title !== product.title) formData.append("title", form.title);
-            if (form.originalPrice !== String(product.originalPrice))
-                formData.append("originalPrice", form.originalPrice);
-            if (form.discount !== String(product.discount ?? 0))
-                formData.append("discount", form.discount);
-            if (form.stock !== String(product.stock)) formData.append("stock", form.stock);
-            if (form.category !== categoryName) formData.append("category", form.category);
-            if (form.description !== (product.description ?? ""))
-                formData.append("description", form.description);
+//     const handleSave = async () => {
+//         setError("");
+//         setLoading(true);
+//         try {
+//             const token = import.meta.env.VITE_TOKEN;
+//             const formData = new FormData();
+//             if (form.title !== product.title) formData.append("title", form.title);
+//             if (form.originalPrice !== String(product.originalPrice))
+//                 formData.append("originalPrice", form.originalPrice);
+//             if (form.discount !== String(product.discount ?? 0))
+//                 formData.append("discount", form.discount);
+//             if (form.stock !== String(product.stock)) formData.append("stock", form.stock);
+//             if (form.category !== categoryName) formData.append("category", form.category);
+//             if (form.description !== (product.description ?? ""))
+//                 formData.append("description", form.description);
 
-            if (thumbnailFile) formData.append("thumbnail", thumbnailFile);
-            imageFiles.forEach((f) => formData.append("productImages", f));
+//             if (thumbnailFile) formData.append("thumbnail", thumbnailFile);
+//             imageFiles.forEach((f) => formData.append("productImages", f));
 
-            const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${product._id}`, {
-                method: "PATCH",
-                headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
-                body: formData,
-            });
-            console.log("Update response:", res);
+//             const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${product.id}`, {
+//                 method: "PATCH",
+//                 headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
+//                 body: formData,
+//             });
+//             console.log("Update response:", res);
 
-            if (!res.ok) throw new Error("Failed to update product");
-            const data = await res.json();
+//             if (!res.ok) throw new Error("Failed to update product");
+//             const data = await res.json();
 
-            onSave(data.data?.product ?? data.product ?? data);
-            onClose();
-        } catch {
-            setError("Failed to save changes. Please try again.");
-        } finally {
-            setLoading(false);
-        }
-    };
+//             onSave(data.data?.product ?? data.product ?? data);
+//             onClose();
+//         } catch {
+//             setError("Failed to save changes. Please try again.");
+//         } finally {
+//             window.location.reload();
+//         }
+//     };
 
-    return (
-        <div className="pd-modal-overlay" onClick={onClose}>
-            <div className="pd-modal" onClick={(e) => e.stopPropagation()}>
-                <div className="pd-modal-header">
-                    <div>
-                        <h2 className="pd-modal-title">Edit Product</h2>
-                        <p className="pd-modal-subtitle">Update product information and images</p>
-                    </div>
-                    <button className="pd-modal-close" onClick={onClose}>×</button>
-                </div>
+//     return (
+//         <div className="pd-modal-overlay" onClick={onClose}>
+//             <div className="pd-modal" onClick={(e) => e.stopPropagation()}>
+//                 <div className="pd-modal-header">
+//                     <div>
+//                         <h2 className="pd-modal-title">Edit Product</h2>
+//                         <p className="pd-modal-subtitle">Update product information and images</p>
+//                     </div>
+//                     <button className="pd-modal-close" onClick={onClose}>×</button>
+//                 </div>
 
-                {error && <div className="pd-modal-error">{error}</div>}
+//                 {error && <div className="pd-modal-error">{error}</div>}
 
-                <div className="pd-modal-field">
-                    <label>Product Name</label>
-                    <input name="title" value={form.title} onChange={handleChange} />
-                </div>
+//                 <div className="pd-modal-field">
+//                     <label>Product Name</label>
+//                     <input name="title" value={form.title} onChange={handleChange} />
+//                 </div>
 
-                <div className="pd-modal-row">
-                    <div className="pd-modal-field">
-                        <label>Price ($)</label>
-                        <input name="originalPrice" type="number" value={form.originalPrice} onChange={handleChange} />
-                    </div>
-                    <div className="pd-modal-field">
-                        <label>Discount (%)</label>
-                        <input name="discount" type="number" value={form.discount} onChange={handleChange} />
-                    </div>
-                    <div className="pd-modal-field">
-                        <label>Stock Quantity</label>
-                        <input name="stock" type="number" value={form.stock} onChange={handleChange} />
-                    </div>
-                </div>
+//                 <div className="pd-modal-row">
+//                     <div className="pd-modal-field">
+//                         <label>Price ($)</label>
+//                         <input name="originalPrice" type="number" value={form.originalPrice} onChange={handleChange} />
+//                     </div>
+//                     <div className="pd-modal-field">
+//                         <label>Discount (%)</label>
+//                         <input name="discount" type="number" value={form.discount} onChange={handleChange} />
+//                     </div>
+//                     <div className="pd-modal-field">
+//                         <label>Stock Quantity</label>
+//                         <input name="stock" type="number" value={form.stock} onChange={handleChange} />
+//                     </div>
+//                 </div>
 
-                <div className="pd-modal-field">
-                    <label>Category</label>
-                    <select name="category" value={form.category} onChange={handleChange}>
-                        {CATEGORY_OPTIONS.map((c) => <option key={c}>{c}</option>)}
-                    </select>
-                </div>
+//                 <div className="pd-modal-field">
+//                     <label>Category</label>
+//                     <select name="category" value={form.category} onChange={handleChange}>
+//                         {CATEGORY_OPTIONS.map((c) => <option key={c}>{c}</option>)}
+//                     </select>
+//                 </div>
 
-                <div className="pd-modal-field">
-                    <label>Description</label>
-                    <textarea name="description" value={form.description} onChange={handleChange} rows={3} />
-                </div>
+//                 <div className="pd-modal-field">
+//                     <label>Description</label>
+//                     <textarea name="description" value={form.description} onChange={handleChange} rows={3} />
+//                 </div>
 
-                <div className="pd-modal-field">
-                    <label>Thumbnail</label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setThumbnailFile(e.target.files?.[0] ?? null)}
-                    />
-                </div>
+//                 <div className="pd-modal-field">
+//                     <label>Thumbnail</label>
+//                     <input
+//                         type="file"
+//                         accept="image/*"
+//                         onChange={(e) => setThumbnailFile(e.target.files?.[0] ?? null)}
+//                     />
+//                 </div>
 
-                <div className="pd-modal-field">
-                    <label>Product Images</label>
-                    {imageUrls.map((url, idx) => (
-                        <div key={idx} className="pd-modal-img-row">
-                            <input type="text" value={url} readOnly className="pd-modal-img-url" />
-                            <button className="pd-modal-img-remove" onClick={() => removeImageUrl(idx)}>×</button>
-                        </div>
-                    ))}
-                    <input
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        onChange={(e) => setImageFiles(Array.from(e.target.files ?? []).slice(0, 5))}
-                        className="pd-modal-file"
-                    />
-                    {imageFiles.length > 0 && (
-                        <p className="pd-modal-file-count">{imageFiles.length} new image(s) selected</p>
-                    )}
-                </div>
+//                 <div className="pd-modal-field">
+//                     <label>Product Images</label>
+//                     {imageUrls.map((url, idx) => (
+//                         <div key={idx} className="pd-modal-img-row">
+//                             <input type="text" value={url} readOnly className="pd-modal-img-url" />
+//                             <button className="pd-modal-img-remove" onClick={() => removeImageUrl(idx)}>×</button>
+//                         </div>
+//                     ))}
+//                     <input
+//                         type="file"
+//                         accept="image/*"
+//                         multiple
+//                         onChange={(e) => setImageFiles(Array.from(e.target.files ?? []).slice(0, 5))}
+//                         className="pd-modal-file"
+//                     />
+//                     {imageFiles.length > 0 && (
+//                         <p className="pd-modal-file-count">{imageFiles.length} new image(s) selected</p>
+//                     )}
+//                 </div>
 
-                <div className="pd-modal-actions">
-                    <button className="pd-btn-primary" onClick={handleSave} disabled={loading}>
-                        {loading ? "Saving..." : "Save Changes"}
-                    </button>
-                    <button className="pd-btn-ghost" onClick={onClose}>Cancel</button>
-                </div>
-            </div>
-        </div>
-    );
-}
+//                 <div className="pd-modal-actions">
+//                     <button className="pd-btn-primary" onClick={handleSave} disabled={loading}>
+//                         {loading ? "Saving..." : "Save Changes"}
+//                     </button>
+//                     <button className="pd-btn-ghost" onClick={onClose}>Cancel</button>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
 
 export default function ProductDetails() {
     const { prodId } = useParams();
@@ -181,8 +182,9 @@ export default function ProductDetails() {
                 const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${prodId}`, {
                     headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
                 });
-                if (!res.ok) throw new Error();
+                //   if (!res.ok) throw new Error();
                 const data = await res.json();
+                console.log(data);
                 setProduct(data.product);
 
             } catch {
@@ -366,7 +368,6 @@ export default function ProductDetails() {
                 <EditModal
                     product={product}
                     onClose={() => setShowEdit(false)}
-                    onSave={(updated) => setProduct(updated)}
                 />
             )}
         </div>

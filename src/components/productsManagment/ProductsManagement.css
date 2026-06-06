@@ -29,7 +29,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -95,7 +95,7 @@
 }
 
 .pm-search-input:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
 }
 
 .pm-search-input::placeholder {
@@ -122,7 +122,7 @@
 }
 
 .pm-btn-search {
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -163,8 +163,8 @@
 
 .pm-btn-filter:hover,
 .pm-btn-filter--active {
-    border-color: #1a7a6e;
-    color: #1a7a6e;
+    border-color: #2d9d8f;
+    color: #2d9d8f;
     background: #f0faf8;
 }
 
@@ -192,7 +192,7 @@
 }
 
 .pm-sort-select:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
 }
 
 /* ── Filter panel ── */
@@ -239,7 +239,7 @@
 
 .pm-filter-field select:focus,
 .pm-filter-field input:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
     background: #fff;
 }
 
@@ -280,7 +280,7 @@
 
 .pm-filtered-tag {
     background: #e6f4f1;
-    color: #1a7a6e;
+    color: #2d9d8f;
     font-size: 0.75rem;
     font-weight: 600;
     border-radius: 20px;
@@ -301,7 +301,7 @@
     width: 18px;
     height: 18px;
     border: 2px solid #e0e5ec;
-    border-top-color: #1a7a6e;
+    border-top-color: #2d9d8f;
     border-radius: 50%;
     animation: pm-spin 0.7s linear infinite;
 }
@@ -517,8 +517,8 @@
 }
 
 .pm-page-btn:hover:not(:disabled) {
-    border-color: #1a7a6e;
-    color: #1a7a6e;
+    border-color: #2d9d8f;
+    color: #2d9d8f;
     background: #f0faf8;
 }
 
@@ -528,9 +528,9 @@
 }
 
 .pm-page-btn--active {
-    background: #1a7a6e !important;
+    background: #2d9d8f !important;
     color: #fff !important;
-    border-color: #1a7a6e !important;
+    border-color: #2d9d8f !important;
 }
 
 .pm-page-dots {
@@ -645,7 +645,7 @@
 .pm-modal-field input:focus,
 .pm-modal-field select:focus,
 .pm-modal-field textarea:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
     background: #fff;
 }
 
@@ -663,7 +663,7 @@
 
 .pm-btn-primary {
     flex: 1;
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;

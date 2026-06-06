@@ -64,7 +64,7 @@
 }
 
 .om-search-input:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
 }
 
 .om-search-input::placeholder {
@@ -91,7 +91,7 @@
 }
 
 .om-btn-search {
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -127,7 +127,7 @@
 }
 
 .om-select:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
 }
 
 .om-btn-clear {
@@ -167,7 +167,7 @@
 
 .om-filtered-tag {
     background: #e6f4f1;
-    color: #1a7a6e;
+    color: #2d9d8f;
     font-size: 0.75rem;
     font-weight: 600;
     border-radius: 20px;
@@ -188,7 +188,7 @@
     width: 18px;
     height: 18px;
     border: 2px solid #e0e5ec;
-    border-top-color: #1a7a6e;
+    border-top-color: #2d9d8f;
     border-radius: 50%;
     animation: om-spin 0.7s linear infinite;
 }
@@ -323,8 +323,8 @@
 }
 
 .om-btn-view:hover {
-    border-color: #1a7a6e;
-    color: #1a7a6e;
+    border-color: #2d9d8f;
+    color: #2d9d8f;
     background: #f0faf8;
 }
 
@@ -379,8 +379,8 @@
 }
 
 .om-page-btn:hover:not(:disabled) {
-    border-color: #1a7a6e;
-    color: #1a7a6e;
+    border-color: #2d9d8f;
+    color: #2d9d8f;
     background: #f0faf8;
 }
 
@@ -390,9 +390,9 @@
 }
 
 .om-page-btn--active {
-    background: #1a7a6e !important;
+    background: #2d9d8f !important;
     color: #fff !important;
-    border-color: #1a7a6e !important;
+    border-color: #2d9d8f !important;
 }
 
 .om-page-dots {

@@ -18,7 +18,7 @@
     width: 18px;
     height: 18px;
     border: 2px solid #e0e5ec;
-    border-top-color: #1a7a6e;
+    border-top-color: #2d9d8f;
     border-radius: 50%;
     animation: ad-spin 0.7s linear infinite;
 }
@@ -44,7 +44,7 @@
 }
 
 .ad-crumb:hover {
-    color: #1a7a6e;
+    color: #2d9d8f;
 }
 
 .ad-crumb--active {
@@ -200,7 +200,7 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     display: flex;
     align-items: center;
@@ -275,7 +275,7 @@
 .ad-value--price {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #1a7a6e;
+    color: #2d9d8f;
 }
 
 .ad-info-grid {
@@ -321,12 +321,12 @@
 }
 
 .ad-status-select:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
     background: #fff;
 }
 
 .ad-btn-update {
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -339,7 +339,7 @@
 }
 
 .ad-btn-update:hover:not(:disabled) {
-    background: #155f56;
+    background: #2d9d8f;
 }
 
 .ad-btn-update:disabled {

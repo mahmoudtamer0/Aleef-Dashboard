@@ -29,7 +29,7 @@
 }
 
 .pd-crumb:hover {
-    color: #1a7a6e;
+    color: #2d9d8f;
 }
 
 .pd-crumb-active {
@@ -98,7 +98,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -204,7 +204,7 @@
 }
 
 .pd-thumb-active {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
 }
 
 .pd-thumb img {
@@ -228,7 +228,7 @@
 .pd-info-price {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #1a7a6e;
+    color: #2d9d8f;
     margin-bottom: 6px;
 }
 
@@ -278,7 +278,7 @@
 .pd-category-badge {
     display: inline-block;
     background: #e6f4f1;
-    color: #1a7a6e;
+    color: #2d9d8f;
     border-radius: 20px;
     padding: 4px 12px;
     font-size: 0.8rem;
@@ -307,7 +307,7 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -440,7 +440,7 @@
 .pd-modal-field input:focus,
 .pd-modal-field select:focus,
 .pd-modal-field textarea:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
     background: #fff;
 }
 
@@ -500,7 +500,7 @@
 
 .pd-modal-file-count {
     font-size: 0.8rem;
-    color: #1a7a6e;
+    color: #2d9d8f;
     margin: 4px 0 0;
 }
 

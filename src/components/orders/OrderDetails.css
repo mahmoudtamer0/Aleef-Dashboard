@@ -18,7 +18,7 @@
     width: 18px;
     height: 18px;
     border: 2px solid #e0e5ec;
-    border-top-color: #1a7a6e;
+    border-top-color: #2d9d8f;
     border-radius: 50%;
     animation: od-spin 0.7s linear infinite;
 }
@@ -44,7 +44,7 @@
 }
 
 .od-crumb:hover {
-    color: #1a7a6e;
+    color: #2d9d8f;
 }
 
 .od-crumb--active {
@@ -193,7 +193,7 @@
 .od-value--price {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #1a7a6e;
+    color: #2d9d8f;
 }
 
 .od-status-row {
@@ -216,12 +216,12 @@
 }
 
 .od-status-select:focus {
-    border-color: #1a7a6e;
+    border-color: #2d9d8f;
     background: #fff;
 }
 
 .od-btn-update {
-    background: #1a7a6e;
+    background: #2d9d8f;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -359,6 +359,6 @@
 }
 
 .od-summary-total span:last-child {
-    color: #1a7a6e;
+    color: #2d9d8f;
     font-size: 1.1rem;
 }
