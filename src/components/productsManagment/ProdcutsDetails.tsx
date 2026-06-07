@@ -311,7 +311,7 @@ export default function ProductDetails() {
                             <div className="pd-category-list">
                                 {Array.isArray(product.category) ? (
                                     product.category.map((cat: any) => (
-                                        <span key={cat._id} className="pd-category-badge">
+                                        <span key={cat.id} className="pd-category-badge">
                                             {cat.name}
                                         </span>
                                     ))

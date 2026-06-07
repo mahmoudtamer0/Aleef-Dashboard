@@ -182,7 +182,7 @@ export default function Orders() {
                                 </tr>
                             ) : (
                                 orders?.map((o, idx) => (
-                                    <tr key={o._id} className="om-table-row" onClick={() => navigate(`/orders/${o._id}`)}>
+                                    <tr key={o.id} className="om-table-row" onClick={() => navigate(`/orders/${o.id}`)}>
                                         <td className="om-id-cell">#{(page - 1) * LIMIT + idx + 1}</td>
                                         <td>
                                             <div className="om-customer-cell">
@@ -201,7 +201,7 @@ export default function Orders() {
                                             </span>
                                         </td>
                                         <td onClick={(e) => e.stopPropagation()}>
-                                            <button className="om-btn-view" onClick={() => navigate(`/orders/${o._id}`)}>
+                                            <button className="om-btn-view" onClick={() => navigate(`/orders/${o.id}`)}>
                                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                                     <circle cx="12" cy="12" r="3" />

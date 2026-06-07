@@ -3,10 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./AppointmentDetails.css";
 
 interface Appointment {
-    _id: string;
-    owner: { _id: string; name: string; email: string; profilePic: string };
-    doctor: { _id: string; name: string; specialization: string; profilePic: string };
-    pet: { _id: string; name: string; type: string; gender: string; profilePic: string };
+    id: string;
+    owner: { id: string; name: string; email: string; profilePic: string };
+    doctor: { id: string; name: string; specialization: string; profilePic: string };
+    pet: { id: string; name: string; type: string; gender: string; profilePic: string };
     date: string;
     time: string;
     reason?: string;
@@ -109,7 +109,7 @@ export default function AppointmentDetails() {
                 <span className="ad-sep">›</span>
                 <span className="ad-crumb" onClick={() => navigate("/appointments")}>Appointments</span>
                 <span className="ad-sep">›</span>
-                <span className="ad-crumb ad-crumb--active">#{appointment._id.slice(-6).toUpperCase()}</span>
+                <span className="ad-crumb ad-crumb--active">#{appointment.id.slice(-6).toUpperCase()}</span>
             </div>
 
             <div className="ad-page-header">
@@ -121,7 +121,7 @@ export default function AppointmentDetails() {
                     </button>
                     <div>
                         <h1 className="ad-page-title">Appointment Details</h1>
-                        <p className="ad-page-subtitle">#{appointment._id.slice(-6).toUpperCase()}</p>
+                        <p className="ad-page-subtitle">#{appointment.id.slice(-6).toUpperCase()}</p>
                     </div>
                 </div>
                 <span className={`ad-badge ${STATUS_COLORS[appointment.status]}`}>

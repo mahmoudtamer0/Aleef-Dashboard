@@ -1,6 +1,6 @@
 interface ProductImage {
     url: string;
-    cloudinary_id: string;
+    cloudinaryid: string;
 }
 
 export interface Product {
@@ -9,7 +9,7 @@ export interface Product {
     originalPrice: number;
     finalPrice: number;
     discount: number;
-    category: { _id: string; name: string }[] | string;
+    category: { id: string; name: string }[] | string;
     stock: number;
     buys: number;
     description: string;

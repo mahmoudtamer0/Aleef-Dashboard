@@ -268,7 +268,7 @@ const Doctors = () => {
                                     doctors.map((doctor: any) => (
 
                                         <tr
-                                            key={doctor._id}
+                                            key={doctor.id}
                                             className="om-table-row"
                                         >
 

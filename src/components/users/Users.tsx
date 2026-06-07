@@ -113,7 +113,7 @@ const Users = () => {
 
             setUsers(prev =>
                 prev.map(user =>
-                    user._id === userId
+                    user.id === userId
                         ? { ...user, status: "banned" }
                         : user
                 )
@@ -149,7 +149,7 @@ const Users = () => {
 
             setUsers(prev =>
                 prev.map(user =>
-                    user._id === userId
+                    user.id === userId
                         ? { ...user, status: "active" }
                         : user
                 )
@@ -271,9 +271,9 @@ const Users = () => {
                                     users.map((user) => (
 
                                         <tr
-                                            key={user._id}
+                                            key={user.id}
                                             className="om-table-row"
-                                            onClick={() => goToProfile(user._id)}
+                                            onClick={() => goToProfile(user.id)}
                                         >
 
                                             <td>
@@ -321,7 +321,7 @@ const Users = () => {
                                                     <button
                                                         className="om-btn-view"
                                                         disabled={isBtnLoading}
-                                                        onClick={() => goToProfile(user._id)}
+                                                        onClick={() => goToProfile(user.id)}
                                                     >
 
                                                         <svg
@@ -346,7 +346,7 @@ const Users = () => {
                                                             disabled={isBtnLoading}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();
-                                                                handleBan(user._id);
+                                                                handleBan(user.id);
                                                             }}
                                                             className="om-btn-danger"
                                                         >
@@ -359,7 +359,7 @@ const Users = () => {
                                                             disabled={isBtnLoading}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();
-                                                                handleUnBan(user._id);
+                                                                handleUnBan(user.id);
                                                             }}
                                                             className="om-btn-success"
                                                         >

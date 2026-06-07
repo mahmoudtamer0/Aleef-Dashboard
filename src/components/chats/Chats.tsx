@@ -82,7 +82,7 @@ export default function ChatMonitoring() {
         setLoadingMessages(true);
         try {
             const response = await fetch(
-                `${import.meta.env.VITE_BASE_URL}/chats/${chat._id}/messages/admin`,
+                `${import.meta.env.VITE_BASE_URL}/chats/${chat.id}/messages/admin`,
                 { headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` } }
             );
             const data = await response.json();
@@ -165,10 +165,10 @@ export default function ChatMonitoring() {
                                 const members = chat.memberDetails || [];
                                 const firstMember = members[0];
                                 const secondMember = members[1];
-                                const active = selectedChat?._id === chat._id;
+                                const active = selectedChat?.id === chat.id;
                                 return (
                                     <div
-                                        key={chat._id}
+                                        key={chat.id}
                                         className={`cm-chat-item ${active ? "cm-chat-item--active" : ""}`}
                                         onClick={() => fetchMessages(chat)}
                                     >
@@ -238,7 +238,7 @@ export default function ChatMonitoring() {
                                                 const isDoctor = msg.senderModel === "Doctor";
                                                 return (
                                                     <div
-                                                        key={msg._id}
+                                                        key={msg.id}
                                                         className={`cm-msg-row ${isDoctor ? "cm-msg-row--right" : "cm-msg-row--left"}`}
                                                     >
                                                         {!isDoctor && (

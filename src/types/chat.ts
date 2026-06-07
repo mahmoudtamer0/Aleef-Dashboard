@@ -1,20 +1,20 @@
 export interface Member {
-    _id: string;
+    id: string;
     name: string;
     profilePic?: string;
 }
 
 export interface Chat {
-    _id: string;
+    id: string;
     chatType: string;
     memberDetails: Member[];
 }
 
 export interface Message {
-    _id: string;
+    id: string;
     chatId: string;
     sender: {
-        _id: string;
+        id: string;
         name: string;
         profilePic?: string;
     };

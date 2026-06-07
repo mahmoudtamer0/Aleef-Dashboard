@@ -83,7 +83,7 @@ export default function OrderDetails() {
                 <span className="od-sep">›</span>
                 <span className="od-crumb" onClick={() => navigate("/orders")}>Orders</span>
                 <span className="od-sep">›</span>
-                <span className="od-crumb od-crumb--active">Order #{order._id.slice(-6).toUpperCase()}</span>
+                <span className="od-crumb od-crumb--active">Order #{order.id.slice(-6).toUpperCase()}</span>
             </div>
 
             <div className="od-page-header">
@@ -95,7 +95,7 @@ export default function OrderDetails() {
                     </button>
                     <div>
                         <h1 className="od-page-title">Order Details</h1>
-                        <p className="od-page-subtitle">Order #{order._id.slice(-6).toUpperCase()}</p>
+                        <p className="od-page-subtitle">Order #{order.id.slice(-6).toUpperCase()}</p>
                     </div>
                 </div>
                 <span className={`od-badge ${STATUS_COLORS[order.status]}`}>
@@ -199,7 +199,7 @@ export default function OrderDetails() {
 
                 <div className="od-items">
                     {order.items?.map((item) => (
-                        <div key={item._id} className="od-item">
+                        <div key={item.id} className="od-item">
                             <div className="od-item-left">
                                 <img
                                     className="od-item-img"

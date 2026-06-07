@@ -5,24 +5,24 @@ import SearchInput from "../searchBar/Search";
 import Pagination from "../pagination/Pagination";
 
 interface Appointment {
-    _id: string;
+    id: string;
     reason: string;
     status: string;
     date: string;
 
     owner: {
-        _id: string;
+        id: string;
         name: string;
         profilePic?: string;
     };
 
     doctor: {
-        _id: string;
+        id: string;
         name: string;
     };
 
     pet: {
-        _id: string;
+        id: string;
         name: string;
         image?: string;
         type?: string;
@@ -217,10 +217,10 @@ export default function AppointmentsManagement() {
                                         appointments.map((appointment) => (
 
                                             <tr
-                                                key={appointment._id}
+                                                key={appointment.id}
                                                 className="appointments-row"
                                                 onClick={() =>
-                                                    navigate(`/appointments/${appointment._id}`)
+                                                    navigate(`/appointments/${appointment.id}`)
                                                 }
                                             >
 

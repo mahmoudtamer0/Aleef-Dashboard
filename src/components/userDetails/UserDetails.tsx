@@ -123,7 +123,7 @@ const UserDetails = () => {
                                     pets && pets.length > 0 ? (
                                         <div className="pets-grid">
                                             {pets.map((pet: Pet) => (
-                                                <div className="pet-card" key={pet._id}>
+                                                <div className="pet-card" key={pet.id}>
                                                     <img
                                                         src={pet.profilePic || "https://placehold.co/80x80"}
                                                         alt={pet.name}
