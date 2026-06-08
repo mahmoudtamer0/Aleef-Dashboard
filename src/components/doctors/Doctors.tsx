@@ -3,6 +3,7 @@ import type { Doctor } from '../../types/doctor'
 import "./doctors.css"
 import Pagination from '../pagination/Pagination'
 import SearchInput from '../searchBar/Search'
+import { useNavigate } from 'react-router-dom'
 
 const Doctors = () => {
 
@@ -108,6 +109,11 @@ const Doctors = () => {
         statusFilter ||
         sortBy !== "latest"
     )
+    const navigate = useNavigate();
+
+    const goToProfile = (id: string) => {
+        navigate(`/doctors/${id}`);
+    };
 
     return (
 
@@ -270,6 +276,7 @@ const Doctors = () => {
                                         <tr
                                             key={doctor.id}
                                             className="om-table-row"
+                                            onClick={() => goToProfile(doctor.id)}
                                         >
 
                                             <td>

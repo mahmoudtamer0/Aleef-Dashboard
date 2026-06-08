@@ -11,7 +11,7 @@ const DoctorReqDetails = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        fetch(`${import.meta.env.VITE_BASE_URL}/doctors/${doctorId}`, {
+        fetch(`${import.meta.env.VITE_BASE_URL}/doctors/details-for-admin/${doctorId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -21,11 +21,13 @@ const DoctorReqDetails = () => {
         )
             .then(data => data.json())
             .then(data => {
-                setDoctor(data.doctorProfile.doctor)
+                setDoctor(data.doctorProfile)
             })
             .finally(() => setIsLoading(false))
 
+
     }, [])
+
 
 
     const approveRequest = async () => {
@@ -44,6 +46,7 @@ const DoctorReqDetails = () => {
             );
 
             const data = await res.json();
+            console.log(data)
 
 
             if (!res.ok) throw new Error(data.message || "Failed request");
@@ -98,7 +101,7 @@ const DoctorReqDetails = () => {
                                     <img src={doctor?.profilePic} alt={doctor?.name} className="dr-avatar" />
                                 ) : (
                                     <div className="dr-avatar--placeholder">
-                                        {doctor?.name.split(" ").map(w => w[0]).join("").slice(0, 2)}
+                                        {doctor?.name.includes(" ") ? doctor?.name.split(" ").map(w => w[0]).join("").slice(0, 2) : doctor?.name.slice(0, 2)}
                                     </div>
                                 )}
                                 <p className="dr-name">{doctor?.name}</p>
@@ -142,20 +145,20 @@ const DoctorReqDetails = () => {
                             <p className="dr-card__subtitle">Selfie photo submitted by the doctor for identity verification</p>
 
                             <div className="dr-verification-selfie">
-                                {doctor?.IdentityVerificationImage ? (
+                                {doctor?.documents?.identity_verification ? (
                                     <div className="dr-selfie-wrapper">
                                         <div className="dr-selfie-badge">
                                             <span className="dr-selfie-badge__icon">📷</span>
                                             <span>Selfie Photo</span>
                                         </div>
                                         <img
-                                            src={doctor?.IdentityVerificationImage}
+                                            src={doctor?.documents?.identity_verification}
                                             alt="Doctor selfie"
                                             className="dr-selfie-img"
-                                            onClick={() => window.open(doctor?.IdentityVerificationImage, "_blank")}
+                                            onClick={() => window.open(doctor?.documents?.identity_verification, "_blank")}
                                         />
                                         <a
-                                            href={doctor?.IdentityVerificationImage}
+                                            href={doctor?.documents?.identity_verification}
                                             target="_blank"
                                             rel="noreferrer"
                                             className="dr-img-view-btn"
@@ -182,16 +185,16 @@ const DoctorReqDetails = () => {
                                         <span className="dr-nationalid-item__label-dot dr-nationalid-item__label-dot--front"></span>
                                         Front Side
                                     </div>
-                                    {doctor?.NationalIdFront ? (
+                                    {doctor?.documents?.national_id_front ? (
                                         <div className="dr-nationalid-img-wrapper">
                                             <img
-                                                src={doctor?.NationalIdFront}
+                                                src={doctor?.documents?.national_id_front}
                                                 alt="National ID Front"
                                                 className="dr-nationalid-img"
-                                                onClick={() => window.open(doctor?.NationalIdFront, "_blank")}
+                                                onClick={() => window.open(doctor?.documents?.national_id_front, "_blank")}
                                             />
                                             <a
-                                                href={doctor?.NationalIdFront}
+                                                href={doctor?.documents?.national_id_front}
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="dr-img-view-btn"
@@ -212,16 +215,16 @@ const DoctorReqDetails = () => {
                                         <span className="dr-nationalid-item__label-dot dr-nationalid-item__label-dot--back"></span>
                                         Back Side
                                     </div>
-                                    {doctor?.NationalIdBack ? (
+                                    {doctor?.documents?.national_id_back ? (
                                         <div className="dr-nationalid-img-wrapper">
                                             <img
-                                                src={doctor?.NationalIdBack}
+                                                src={doctor?.documents?.national_id_back}
                                                 alt="National ID Back"
                                                 className="dr-nationalid-img"
-                                                onClick={() => window.open(doctor?.NationalIdBack, "_blank")}
+                                                onClick={() => window.open(doctor?.documents?.national_id_back, "_blank")}
                                             />
                                             <a
-                                                href={doctor?.NationalIdBack}
+                                                href={doctor?.documents?.national_id_back}
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="dr-img-view-btn"

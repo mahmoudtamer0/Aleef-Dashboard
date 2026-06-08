@@ -109,7 +109,7 @@ const DoctorsRequests = () => {
     const hasFilters = !!search;
 
     const goToProfile = (id: string) => {
-        navigate(`/doctors-requests/${id}`);
+        navigate(`/doctors/${id}`);
     };
 
     return (

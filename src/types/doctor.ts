@@ -1,4 +1,9 @@
 
+interface documents {
+    identity_verification: string;
+    national_id_front: string;
+    national_id_back: string;
+}
 
 export interface Doctor {
     id: string;
@@ -6,9 +11,7 @@ export interface Doctor {
     phone: string;
     email: string;
     profilePic: string;
-    IdentityVerificationImage: string;
-    NationalIdFront: string;
-    NationalIdBack: string;
+    documents: documents;
     city: string;
     specialization: string;
     status: string;
