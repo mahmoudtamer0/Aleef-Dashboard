@@ -82,7 +82,6 @@ export default function AppointmentsManagement() {
 
             const data = await res.json();
 
-            console.log(data);
 
             setAppointments(data.appointments || []);
             setTotalPages(data.totalPages || 1);

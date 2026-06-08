@@ -178,13 +178,11 @@ export default function ProductDetails() {
         const fetchProduct = async () => {
             setLoading(true);
             try {
-                console.log("Fetching product with ID:", prodId);
                 const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${prodId}`, {
                     headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
                 });
                 //   if (!res.ok) throw new Error();
                 const data = await res.json();
-                console.log(data);
                 setProduct(data.product);
 
             } catch {
@@ -196,7 +194,6 @@ export default function ProductDetails() {
         fetchProduct();
     }, [prodId]);
 
-    console.log(product);
 
 
     const handleDelete = async () => {

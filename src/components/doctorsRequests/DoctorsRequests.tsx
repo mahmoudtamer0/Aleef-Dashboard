@@ -50,7 +50,6 @@ const DoctorsRequests = () => {
 
             const data = await res.json();
 
-            console.log(data);
 
             setDoctors(data.doctors || []);
             setTotalPages(data.totalPages || 1);

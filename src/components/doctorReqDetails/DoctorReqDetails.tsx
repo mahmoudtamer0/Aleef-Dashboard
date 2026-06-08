@@ -22,11 +22,9 @@ const DoctorReqDetails = () => {
             .then(data => data.json())
             .then(data => {
                 setDoctor(data.doctorProfile.doctor)
-                console.log(data)
             })
             .finally(() => setIsLoading(false))
 
-        console.log(doctorId)
     }, [])
 
 
@@ -47,7 +45,6 @@ const DoctorReqDetails = () => {
 
             const data = await res.json();
 
-            console.log(res)
 
             if (!res.ok) throw new Error(data.message || "Failed request");
 

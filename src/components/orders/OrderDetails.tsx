@@ -39,7 +39,6 @@ export default function OrderDetails() {
                 const data = await res.json();
                 const o = data.order ?? data.data?.order ?? data;
                 setOrder(o);
-                console.log("Fetched order:", o);
                 setSelectedStatus(o.status);
             } catch {
                 setOrder(null);

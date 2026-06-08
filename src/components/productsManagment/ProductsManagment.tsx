@@ -63,7 +63,6 @@ function AddProductModal({ onClose, onSave }: AddProductModalProps) {
                 body: formData,
             });
 
-            console.log("Add product response:", await res.json());
             if (!res.ok) throw new Error("Failed to add product");
             onSave();
             onClose();
