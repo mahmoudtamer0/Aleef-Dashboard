@@ -18,14 +18,15 @@ interface Appointment {
     createdAt: string;
 }
 
-const STATUS_OPTIONS = ["pending", "accepted", "rejected", "completed", "cancelled"];
+const STATUS_OPTIONS = ["pending", "accepted", "rejected", "completed", "cancelled-by-owner", "cancelled-by-doctor"];
 
 const STATUS_COLORS: Record<string, string> = {
     pending: "ad-badge--pending",
     accepted: "ad-badge--accepted",
     rejected: "ad-badge--rejected",
     completed: "ad-badge--completed",
-    cancelled: "ad-badge--cancelled",
+    "cancelled-by-owner": "ad-badge--cancelled",
+    "cancelled-by-doctor": "ad-badge--cancelled",
 };
 
 function formatDate(iso: string) {
