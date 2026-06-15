@@ -146,6 +146,8 @@
     margin-bottom: 16px;
 }
 
+
+
 .ad-cards-row:last-child {
     grid-template-columns: 2fr 1fr;
 }
@@ -345,4 +347,10 @@
 .ad-btn-update:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+    .ad-cards-row {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
 }

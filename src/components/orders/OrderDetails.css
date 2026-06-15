@@ -362,3 +362,9 @@
     color: #2d9d8f;
     font-size: 1.1rem;
 }
+
+@media screen and (max-width: 768px) {
+    .od-cards-row {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
