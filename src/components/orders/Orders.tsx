@@ -181,9 +181,9 @@ export default function Orders() {
                                     </td>
                                 </tr>
                             ) : (
-                                orders?.map((o, idx) => (
+                                orders?.map((o) => (
                                     <tr key={o.id} className="om-table-row" onClick={() => navigate(`/orders/${o.id}`)}>
-                                        <td className="om-id-cell">#{(page - 1) * LIMIT + idx + 1}</td>
+                                        <td className="om-id-cell">#{o.id.slice(-6).toUpperCase()}</td>
                                         <td>
                                             <div className="om-customer-cell">
                                                 <span className="om-customer-name">{o.user?.name ?? "—"}</span>

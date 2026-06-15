@@ -1,6 +1,3 @@
-
-
-
 import React from 'react'
 
 
@@ -33,7 +30,6 @@ interface ActivityItem {
     time: string;
 }
 
-// ─── Mock Data  (replace with real API calls) ─────────
 const revenueData = [
     { month: "Jan", revenue: 4300 },
     { month: "Feb", revenue: 3100 },
@@ -61,7 +57,6 @@ const recentActivity: ActivityItem[] = [
     { id: 5, title: "New User", subtitle: "Emily Davis", time: "3 hours ago" },
 ];
 
-// ─── Icons ────────────────────────────────────────────
 const UsersIcon = () => (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -133,7 +128,6 @@ const statCards: StatCard[] = [
     },
 ];
 
-// ─── Custom Tooltip for Revenue Chart ─────────────────
 const RevenueTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
@@ -155,7 +149,6 @@ const RevenueTooltip = ({ active, payload, label }: any) => {
     return null;
 };
 
-// ─── Custom Tooltip for Appointments Chart ─────────────
 const AppointmentsTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
