@@ -10,7 +10,7 @@ interface AddProductModalProps {
     onSave: () => void;
 }
 
-const CATEGORY_OPTIONS = ["Food", "Accessories", "Dogs", "Toys", "Cats", "Health Care"];
+const CATEGORY_OPTIONS = ["Food", "Accessories", "Dogs", "Toys", "Cats", "healthcare"];
 const SORT_OPTIONS = [
     { value: "", label: "Latest" },
     { value: "best-selling", label: "Best Selling" },
