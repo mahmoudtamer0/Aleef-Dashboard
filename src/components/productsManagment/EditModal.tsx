@@ -21,6 +21,8 @@ export default function EditModal({ product, onClose }: EditModalProps) {
     const [error, setError] = useState("");
 
     const handleSave = async () => {
+        if (loading) return; // ← امنع double click
+
         setLoading(true);
         setError("");
         try {

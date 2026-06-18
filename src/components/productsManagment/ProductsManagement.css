@@ -121,6 +121,36 @@
     color: #3d4a5c;
 }
 
+.pm-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.pm-cat-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #d1d5db;
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    color: #6b7280;
+    transition: all 0.15s;
+}
+
+.pm-cat-btn--active {
+    background: #267D77;
+    border-color: #267D77;
+    color: white;
+}
+
+.pm-cat-hint {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
 .pm-btn-search {
     background: #2d9d8f;
     color: #fff;

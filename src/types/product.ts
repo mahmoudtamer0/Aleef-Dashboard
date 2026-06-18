@@ -9,7 +9,7 @@ export interface Product {
     originalPrice: number;
     finalPrice: number;
     discount: number;
-    category: { id: string; name: string }[] | string;
+    categories: { id: string; name: string }[] | string;
     stock: number;
     buys: number;
     description: string;

@@ -306,15 +306,15 @@ export default function ProductDetails() {
                         <div>
                             <div className="pd-info-label">Category</div>
                             <div className="pd-category-list">
-                                {Array.isArray(product.category) ? (
-                                    product.category.map((cat: any) => (
+                                {Array.isArray(product.categories) ? (
+                                    product.categories.map((cat: any) => (
                                         <span key={cat.id} className="pd-category-badge">
                                             {cat.name}
                                         </span>
                                     ))
                                 ) : (
                                     <span className="pd-category-badge">
-                                        {product.category}
+                                        {product.categories}
                                     </span>
                                 )}
                             </div>

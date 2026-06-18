@@ -25,9 +25,9 @@ function AddProductModal({ onClose, onSave }: AddProductModalProps) {
         originalPrice: "",
         discount: "0",
         stock: "",
-        category: "Food",
         description: "",
     });
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
     const [imageFiles, setImageFiles] = useState<File[]>([]);
     const [loading, setLoading] = useState(false);
@@ -37,10 +37,16 @@ function AddProductModal({ onClose, onSave }: AddProductModalProps) {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
+    const toggleCategory = (cat: string) => {
+        setSelectedCategories((prev) =>
+            prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+        );
+    };
+
     const handleSubmit = async () => {
         setError("");
-        if (!form.title || !form.originalPrice || !form.stock || !form.category) {
-            setError("Please fill all required fields.");
+        if (!form.title || !form.originalPrice || !form.stock || selectedCategories.length === 0) {
+            setError("Please fill all required fields and select at least one category.");
             return;
         }
         setLoading(true);
@@ -50,15 +56,18 @@ function AddProductModal({ onClose, onSave }: AddProductModalProps) {
             formData.append("originalPrice", form.originalPrice);
             formData.append("discount", form.discount);
             formData.append("stock", form.stock);
-            formData.append("category", form.category);
             formData.append("description", form.description);
+            // multiple categories
+            formData.append("categories", JSON.stringify(selectedCategories));
+
+
             if (thumbnailFile) formData.append("thumbnail", thumbnailFile);
             imageFiles.forEach((f) => formData.append("productImages", f));
 
             const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products`, {
                 method: "POST",
                 headers: {
-                    Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`
+                    Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
                 },
                 body: formData,
             });
@@ -107,10 +116,22 @@ function AddProductModal({ onClose, onSave }: AddProductModalProps) {
                 </div>
 
                 <div className="pm-modal-field">
-                    <label>Category</label>
-                    <select name="category" value={form.category} onChange={handleChange}>
-                        {CATEGORY_OPTIONS.map((c) => <option key={c}>{c}</option>)}
-                    </select>
+                    <label>Categories</label>
+                    <div className="pm-categories">
+                        {CATEGORY_OPTIONS.map((cat) => (
+                            <button
+                                key={cat}
+                                type="button"
+                                className={`pm-cat-btn ${selectedCategories.includes(cat) ? "pm-cat-btn--active" : ""}`}
+                                onClick={() => toggleCategory(cat)}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                    {selectedCategories.length === 0 && (
+                        <p className="pm-cat-hint">Select at least one category</p>
+                    )}
                 </div>
 
                 <div className="pm-modal-field">
@@ -139,8 +160,10 @@ function AddProductModal({ onClose, onSave }: AddProductModalProps) {
     );
 }
 
-function getCategoryName(category: Product["category"]): string {
-    if (Array.isArray(category) && category.length > 0) return category[0].name;
+function getCategoryName(category: any): string {
+    if (Array.isArray(category) && category.length > 0) {
+        return category.map((c: any) => c.name).join(", ");
+    }
     if (typeof category === "string") return category;
     return "—";
 }
@@ -151,7 +174,7 @@ export default function ProductsManagement() {
     const [showAddModal, setShowAddModal] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
     const navigate = useNavigate();
-
+    console.log(products);
     // Search & filter state
     const [search, setSearch] = useState("");
     const [searchInput, setSearchInput] = useState("");
@@ -182,7 +205,6 @@ export default function ProductsManagement() {
                 headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
             });
             const data = await res.json();
-            // backend: { status, products, results, page, totalPages, totalProducts }
             setProducts(data.products ?? []);
             setTotalPages(data.totalPages ?? 1);
             setTotalProducts(data.totalProducts ?? 0);
@@ -216,10 +238,9 @@ export default function ProductsManagement() {
         e.stopPropagation();
         if (!window.confirm("Are you sure you want to delete this product?")) return;
         try {
-            const token = localStorage.getItem("token");
             await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`, {
                 method: "DELETE",
-                headers: { Authorization: `Bearer ${token}` },
+                headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
             });
             fetchProducts();
         } catch {
@@ -229,24 +250,12 @@ export default function ProductsManagement() {
 
     const hasActiveFilters = !!(search || category || sort || minPrice || maxPrice);
 
-    // Pagination page numbers with ellipsis
-    const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
-        .filter((n) => n === 1 || n === totalPages || Math.abs(n - page) <= 1)
-        .reduce<(number | "...")[]>((acc, n, idx, arr) => {
-            if (idx > 0 && n - (arr[idx - 1] as number) > 1) acc.push("...");
-            acc.push(n);
-            return acc;
-        }, []);
-
     useEffect(() => {
-
         const handler = setTimeout(() => {
             setSearch(searchInput);
             setPage(1);
         }, 500);
-
         return () => clearTimeout(handler);
-
     }, [searchInput]);
 
     return (
@@ -289,7 +298,6 @@ export default function ProductsManagement() {
                 </div>
             </div>
 
-            {/* Expanded filter panel */}
             {showFilters && (
                 <div className="pm-filters-panel">
                     <div className="pm-filters-grid">
@@ -317,7 +325,6 @@ export default function ProductsManagement() {
                 </div>
             )}
 
-            {/* Table card */}
             <div className="pm-table-card">
                 <div className="pm-table-label">
                     All Products ({totalProducts})
@@ -373,7 +380,14 @@ export default function ProductsManagement() {
                                             </div>
                                         </td>
                                         <td>
-                                            <span className="pm-category-pill">{getCategoryName(p.category)}</span>
+                                            <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
+                                                {Array.isArray(p.categories)
+                                                    ? p.categories.map((c: any) => (
+                                                        <span key={c.id} className="pm-category-pill">{c.name}</span>
+                                                    ))
+                                                    : <span className="pm-category-pill">{p.categories}</span>
+                                                }
+                                            </div>
                                         </td>
                                         <td>
                                             <span className={`pm-stock ${p.stock <= 10 ? "pm-stock--low" : ""}`}>
@@ -406,9 +420,8 @@ export default function ProductsManagement() {
                         </tbody>
                     </table>
                 )}
-
-
             </div>
+
             <Pagination
                 page={page}
                 totalPages={totalPages}
