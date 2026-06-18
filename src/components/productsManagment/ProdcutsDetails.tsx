@@ -199,7 +199,6 @@ export default function ProductDetails() {
     const handleDelete = async () => {
         if (!window.confirm("Are you sure you want to delete this product?")) return;
         try {
-            const token = localStorage.getItem("token");
             await fetch(`${import.meta.env.VITE_BASE_URL}/products/${prodId}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
