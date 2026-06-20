@@ -174,7 +174,6 @@ export default function ProductsManagement() {
     const [showAddModal, setShowAddModal] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
     const navigate = useNavigate();
-    console.log(products);
     // Search & filter state
     const [search, setSearch] = useState("");
     const [searchInput, setSearchInput] = useState("");

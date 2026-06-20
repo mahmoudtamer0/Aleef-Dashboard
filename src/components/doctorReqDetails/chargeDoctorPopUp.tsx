@@ -13,9 +13,6 @@ const chargeDoctorPopUp = ({ isOpen, onClose, doctorId }: { isOpen: boolean, onC
 
 
     const handleSubmit = async () => {
-        console.log(amount)
-        console.log(reason)
-        console.log(doctorId)
         setLoading(true)
         setIsError(false)
         setIsSuccess(false)
@@ -38,7 +35,6 @@ const chargeDoctorPopUp = ({ isOpen, onClose, doctorId }: { isOpen: boolean, onC
             )
 
             const data = await res.json();
-            console.log(data)
 
             if (!res.ok) {
                 setErrMsg(data.message)

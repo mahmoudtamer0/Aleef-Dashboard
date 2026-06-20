@@ -57,7 +57,6 @@ export default function Orders() {
                 headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
             });
             const data = await res.json();
-            console.log("Fetched orders:", data);
             setOrders(data.orders);
             setTotalPages(data.totalPages ?? 1);
             setTotalOrders(data.totalOrders ?? 0);
