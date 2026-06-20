@@ -574,3 +574,123 @@
     font-size: 2rem;
     opacity: 0.5;
 }
+
+.dr-btn-charge {
+    background: #2d9d8f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.18s;
+    padding: 10px;
+}
+
+.dr-btn-charge:hover {
+    opacity: 0.88;
+}
+
+.dr-charge-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+.dr-charge-overlay.open {
+    display: flex;
+}
+
+.dr-charge-modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+    animation: modalIn 0.2s ease;
+}
+
+.charge-inp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.charge-inp input {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #e8edf0;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a2e2e;
+}
+
+.charge-inp input::placeholder {
+    color: #8a9fb0;
+}
+
+.charge-inp button {
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #fff;
+    transition: opacity 0.18s;
+}
+
+.charge-inp button:hover {
+    opacity: 0.88;
+}
+
+.charge-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.charge-btns button {
+    height: 38px;
+    padding: 0 18px;
+    color: white;
+    border: 1px solid #e8edf0;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+.charge-btns button.charge-confirm {
+    background: #2d9d8f;
+}
+
+.charge-btns button.charge-cancel {
+    background: #e63946;
+}
+
+.success-msg {
+    margin: 20px 0;
+    background-color: #a4eea4;
+    padding: 10px;
+    border: 1px solid #40e22e;
+    border-radius: 10px;
+}
+
+.error-msg {
+    margin: 20px 0;
+    background-color: #e05c5c;
+    padding: 10px;
+    border: 1px solid #e05c5c;
+    border-radius: 10px;
+    color: white;
+}

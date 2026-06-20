@@ -3,12 +3,14 @@ import "./userDetails.css"
 import { useParams } from 'react-router-dom'
 import type { User } from '../../types/user'
 import type { Pet } from '../../types/pet'
+import type { Appointment } from '../appoinments/Appointments'
 const UserDetails = () => {
     const { userId } = useParams()
 
     const [user, setUser] = useState<User>()
     const [pets, setPets] = useState<Pet[]>([])
     const [isLoading, setIsLoading] = useState(false)
+    const [appoinments, setAppoinments] = useState<Appointment[]>([])
 
     useEffect(() => {
         setIsLoading(true)
@@ -21,20 +23,24 @@ const UserDetails = () => {
         }
         )
             .then(data => data.json())
-            .then(data => setUser(data.user))
+            .then(data => {
+                setUser(data.user)
+                setPets(data.user.pets)
+                setAppoinments(data.appointments)
+            })
             .finally(() => setIsLoading(false))
 
-        fetch(`${import.meta.env.VITE_BASE_URL}/pets/get-user-pets/${userId}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${import.meta.env.VITE_TOKEN}`
-            }
-        }
-        )
-            .then(data => data.json())
-            .then(data => setPets(data.pets))
-            .finally(() => setIsLoading(false))
+        // fetch(`${import.meta.env.VITE_BASE_URL}/pets/get-user-pets/${userId}`, {
+        //     method: "GET",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Authorization": `Bearer ${import.meta.env.VITE_TOKEN}`
+        //     }
+        // }
+        // )
+        //     .then(data => data.json())
+        //     .then(data => setPets(data.pets))
+        //     .finally(() => setIsLoading(false))
 
     }, [])
 
@@ -155,6 +161,56 @@ const UserDetails = () => {
                                     ) : (
                                         <div className="pets-empty">
                                             No pets found for this user.
+                                        </div>
+                                    )
+                                }
+
+
+                            </div>
+
+                            <div className="card">
+                                {
+                                    appoinments && appoinments.length > 0 ? (
+                                        <div className="pets-grid">
+                                            {appoinments.map((appointment: Appointment) => (
+                                                <div className="pet-card" key={appointment.id}>
+                                                    <img
+                                                        src={appointment.pet?.image}
+                                                        alt={appointment.pet?.name}
+                                                        className="pet-card__image"
+                                                    />
+
+                                                    <div className="pet-card__content">
+                                                        <div className="pet-card__top">
+                                                            <h3 className="pet-card__name">{appointment.pet?.name}</h3>
+
+                                                            {/* <span className={`pet-badge ${pet.healthStatus === "Healthy"
+                                                                ? "pet-badge--healthy"
+                                                                : "pet-badge--warning"
+                                                                }`}>
+                                                                {pet.healthStatus || "Healthy"}
+                                                            </span> */}
+                                                        </div>
+
+                                                        <p className="pet-card__type">
+                                                            {appointment.pet?.type}
+                                                        </p>
+
+                                                        <p className="pet-card__age">
+                                                            {appointment.pet?.age ? `${appointment.pet?.age} years old` : "—"}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="pets-empty">
+                                            <div className="pets-empty-title">
+                                                Appointments
+                                            </div>
+                                            <div className="pets-empty-subtitle">
+                                                {appoinments.length} appointment(s)
+                                            </div>
                                         </div>
                                     )
                                 }

@@ -4,7 +4,7 @@ import "./Appointments.css";
 import SearchInput from "../searchBar/Search";
 import Pagination from "../pagination/Pagination";
 
-interface Appointment {
+export interface Appointment {
     id: string;
     reason: string;
     status: string;
@@ -26,6 +26,7 @@ interface Appointment {
         name: string;
         image?: string;
         type?: string;
+        age?: number;
     };
 }
 

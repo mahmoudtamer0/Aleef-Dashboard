@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import type { Doctor } from '../../types/doctor';
 import { useParams } from 'react-router-dom';
 import "./doctorReqDetails.css"
+import ChargeDoctorPopup from './chargeDoctorPopUp'
 const DoctorReqDetails = () => {
     const { doctorId } = useParams()
 
     const [doctor, setDoctor] = useState<Doctor>()
     const [isLoading, setIsLoading] = useState(false)
     const [isBtnLoading, setIsBtnLoading] = useState(false)
+    const [isopen, setIsOpen] = useState(false)
 
     useEffect(() => {
         setIsLoading(true)
@@ -105,6 +107,7 @@ const DoctorReqDetails = () => {
                                     </div>
                                 )}
                                 <p className="dr-name">{doctor?.name}</p>
+                                {doctor?.status === "active" && <button className="dr-btn-charge" onClick={() => setIsOpen(true)}>Charge Balance</button>}
                             </div>
 
                             <div className="dr-info-grid">
@@ -273,6 +276,8 @@ const DoctorReqDetails = () => {
                                 )}
                             </div>
                         </div>
+
+                        <ChargeDoctorPopup isOpen={isopen} onClose={() => setIsOpen(false)} doctorId={doctor?.id} />
 
                     </div >
                     :
