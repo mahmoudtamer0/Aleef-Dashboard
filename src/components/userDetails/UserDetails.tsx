@@ -12,6 +12,8 @@ const UserDetails = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [appoinments, setAppoinments] = useState<Appointment[]>([])
 
+    console.log(user)
+
     useEffect(() => {
         setIsLoading(true)
         fetch(`${import.meta.env.VITE_BASE_URL}/users/${userId}`, {
@@ -209,7 +211,7 @@ const UserDetails = () => {
                                                 Appointments
                                             </div>
                                             <div className="pets-empty-subtitle">
-                                                {appoinments.length} appointment(s)
+                                                0 appointment(s)
                                             </div>
                                         </div>
                                     )
