@@ -3,13 +3,20 @@ import type { Doctor } from '../../types/doctor';
 import { useParams } from 'react-router-dom';
 import "./doctorReqDetails.css"
 import ChargeDoctorPopup from './chargeDoctorPopUp'
+import RejectDoctorPopup from './RejectDoctorPopUp';
+import AcceptDoctorReq from './AcceptDoctorReq';
+import BanDoctor from './BanDoctor';
 const DoctorReqDetails = () => {
     const { doctorId } = useParams()
 
     const [doctor, setDoctor] = useState<Doctor>()
     const [isLoading, setIsLoading] = useState(false)
     const [isBtnLoading, setIsBtnLoading] = useState(false)
-    const [isopen, setIsOpen] = useState(false)
+    const [isChargeOpen, setIsChargeOpen] = useState(false)
+    const [isRejectOpen, setIsRejectOpen] = useState(false)
+    const [isApproveOpen, setIsApproveOpen] = useState(false)
+    const [isBanOpen, setIsBanOpen] = useState(false)
+
 
     useEffect(() => {
         setIsLoading(true)
@@ -106,7 +113,7 @@ const DoctorReqDetails = () => {
                                     </div>
                                 )}
                                 <p className="dr-name">{doctor?.name}</p>
-                                {doctor?.status === "active" && <button className="dr-btn-charge" onClick={() => setIsOpen(true)}>Charge Balance</button>}
+                                {doctor?.status === "active" && <button className="dr-btn-charge" onClick={() => setIsChargeOpen(true)}>Charge Balance</button>}
                             </div>
 
                             <div className="dr-info-grid">
@@ -251,19 +258,16 @@ const DoctorReqDetails = () => {
                                     <>
                                         <button
                                             disabled={isBtnLoading}
-                                            onClick={approveRequest}
+                                            onClick={() => setIsApproveOpen(true)}
                                             className="btn-approve"
                                         >
-                                            {isBtnLoading ? (
-                                                <span className="loader"></span>
-                                            ) : (
-                                                "Approve Request"
-                                            )}
+                                            Approve Request
                                         </button>
 
                                         <button
                                             disabled={isBtnLoading}
                                             className="btn-reject"
+                                            onClick={() => setIsRejectOpen(true)}
                                         >
                                             Reject Request
                                         </button>
@@ -275,9 +279,20 @@ const DoctorReqDetails = () => {
                                 )}
                             </div>
                         </div>
+                        {(doctor?.status === "active" || doctor?.status === "banned") && (
+                            <div className="dr-card">
+                                <h2 className="dr-card__title">Ban Doctor</h2>
+                                <button className="dr-btn-charge" onClick={() => setIsBanOpen(true)}>
+                                    {doctor?.status === "active" ? "Ban Doctor" : "Unban Doctor"}
+                                </button>
+                            </div>
+                        )}
 
-                        <ChargeDoctorPopup isOpen={isopen} onClose={() => setIsOpen(false)} doctorId={doctor?.id} />
 
+                        <ChargeDoctorPopup isOpen={isChargeOpen} onClose={() => setIsChargeOpen(false)} doctorId={doctor?.id} />
+                        <RejectDoctorPopup isOpen={isRejectOpen} onClose={() => setIsRejectOpen(false)} doctorId={doctor?.id} />
+                        <AcceptDoctorReq isOpen={isApproveOpen} onClose={() => setIsApproveOpen(false)} doctorId={doctor?.id} />
+                        <BanDoctor isOpen={isBanOpen} onClose={() => setIsBanOpen(false)} doctorId={doctor?.id} status={doctor?.status || ""} />
                     </div >
                     :
                     <div className="container">

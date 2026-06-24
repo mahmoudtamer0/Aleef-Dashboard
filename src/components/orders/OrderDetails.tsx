@@ -56,12 +56,15 @@ export default function OrderDetails() {
             const res = await fetch(`${import.meta.env.VITE_BASE_URL}/orders/${orderId}`, {
                 method: "PATCH",
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ status: selectedStatus }),
             });
-            if (!res.ok) throw new Error();
+            if (!res.ok) {
+                console.error(res);
+                throw new Error();
+            }
             setOrder((prev) => prev ? { ...prev, status: selectedStatus as Order["status"] } : prev);
         } catch {
             alert("Failed to update status.");
