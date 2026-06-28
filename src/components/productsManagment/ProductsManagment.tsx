@@ -237,13 +237,15 @@ export default function ProductsManagement() {
         e.stopPropagation();
         if (!window.confirm("Are you sure you want to delete this product?")) return;
         try {
-            await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`, {
+            const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${import.meta.env.VITE_TOKEN}` },
             });
+
+            if (!res.ok) throw new Error("Failed to delete product")
             fetchProducts();
         } catch {
-            alert("Failed to delete product.");
+            alert("you are not allowed to delete this product")
         }
     };
 
