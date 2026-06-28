@@ -12,9 +12,6 @@ body {
     min-height: 100vh;
 }
 
-/* ══════════════════════════════════════
-       CSS VARIABLES
-    ══════════════════════════════════════ */
 :root {
     --sidebar-w: 220px;
     --sidebar-collapsed-w: 64px;
@@ -315,9 +312,6 @@ body {
     opacity: 1;
 }
 
-/* ══════════════════════════════════════
-       DEMO CONTENT AREA
-    ══════════════════════════════════════ */
 .content {
     margin-left: var(--sidebar-w);
     min-height: 100vh;

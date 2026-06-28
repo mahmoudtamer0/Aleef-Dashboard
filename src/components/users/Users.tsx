@@ -118,10 +118,8 @@ const Users = () => {
                 )
             )
 
-        } catch (err) {
-
-            console.error(err)
-
+        } catch (err: any) {
+            alert("You ar not allowed to ban this user")
         } finally {
 
             setIsBtnLoading(false)
